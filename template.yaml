@@ -1,0 +1,24 @@
+### Pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: xxx
+  namespace: xxx
+  restartPolicy: Always, Never, OnFailure
+  labels:
+    xxx: xxxxxx
+spec:
+  containers:
+  - name:
+    image:
+    imagePullPolicy: Always,Never,IfNotPresent
+    ports:
+      name: http
+      containerPort: 88 
+    livenessProbe:
+    readinessProbe:
+    lifecycle:
+        ExecAction: exec
+        TCPSocketAction: tchSocket
+        HTTPGetAction: httpGet
