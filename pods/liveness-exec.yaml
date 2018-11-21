@@ -9,6 +9,7 @@ spec:
     image: busybox:latest
     imagePullPolicy: IfNotPresent
     command: ["/bin/sh","-c","touch /tmp/healthy;sleep 30;rm -f /tmp/healthy;sleep 3600"]
+    # 以 linux 系统命令的形式来探测检测容器的存活状态
     livenessProbe:
       exec:
         command: ["test","-e","/tmp/healthy"]

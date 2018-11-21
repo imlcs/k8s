@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poststart-pod
+  namespace: default
+spec:
+  containers:
+  - name: busybox-httpd
+    image: busybox:latest
+    imagePullPolicy: IfNotPresent
+    # 容器启动时创建 /data/web/html 目录
+    lifecycle:
+      postStart:
+        exec:
+          command: ["mkdir","-p","/data/web/html"]
+    command: ["/bin/sh","-c","sleep 3600"]
+    # 容器 command 命令的优先级高于 postStart 操作，容器初始化时先执行容器级 command 操作，然后再执行 postStart 操作
+    #command: ["/bin/httpd"]
+    #args: ["-f","-h /data/web/html"]

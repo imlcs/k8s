@@ -11,6 +11,7 @@ spec:
     ports:
       - name: http
         containerPort: 80
+    # 以 http 的方式检测容器的存活状态
     livenessProbe:
       httpGet:
         port: http
