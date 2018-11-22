@@ -67,4 +67,25 @@ kbc describe pods myapp-6946649ccd-69p8n # pod name
 kbc rollout undo deployment myapp
 # 编辑 svc
 kbc edit svc myapp
+
 ```
+- 查看 deployment 的滚动历史
+```
+kubectl rollout history deployment myapp-deploy
+```
+- 打补丁修改 deployment 的副本数量
+```
+kubectl patch deployment myapp-deploy -p '{"spec":{"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0}}}}'
+kubectl patch deployment myapp-deploy -p '{"spec":{"replicas":5}}'
+```
+
+- 停止 deployment 的滚动更新
+```
+kubectl rollout pause deployment myapp-deploy
+```
+
+- 回滚到历史版本
+```
+kbc rollout undo deployment myapp-deply --to-revision=1  # 版本号通过 kubectl rollout history 获取
+```
+

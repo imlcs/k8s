@@ -4,3 +4,5 @@
 - DaemonSet
 - Job
 - Cronjob
+- StatefulSet
+- Operator:
