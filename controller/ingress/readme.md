@@ -2,3 +2,9 @@
 - Nginx
 - Traefik
 - Envoy
+
+---
+- 创建密钥对象
+```
+kbc create secret tls tomcat-ingress-tomcat --cert=tls.crt --key=tls.key
+```
