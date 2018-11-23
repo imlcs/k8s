@@ -6,7 +6,7 @@
 - ExternalName: 集群外部的服务引入集群内部，在集群内部直接使用
 - ClusterIP: 默认
 - NodePort: 接入集群外流量
-- and LoadBalancer: 创建云环境上的LB
+- and LoadBalancer: 
 #### 资源记录
 ```
 SVC_NAME.NS_NAME.DOMAIN.LTD.
