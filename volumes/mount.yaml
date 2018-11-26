@@ -26,11 +26,13 @@ spec:
     image: busybox:latest
     imagePullPolicy: IfNotPresent
 
+    # 挂载定义的数据卷
     volumeMounts:
     - name: html
       mountPath: /data/
     - name: timezone
       mountPath: /etc/localtime
+    # 环境变量的定义
     #env:
     #- name: TZ
     #  value: "Asia/Shanghai"
@@ -38,8 +40,10 @@ spec:
     args: ["-c","while true; do echo $(date)>>/data/index.html;sleep 2;done"]
 
   volumes:
+  # 定义临时数据卷，容器删除后数据清空
   - name: html
     emptyDir: {}
+  # 定义主机目录或者文件为数据卷，容器删除后数据不清空
   - name: timezone
     hostPath: 
       path: /usr/share/zoneinfo/Asia/Shanghai
