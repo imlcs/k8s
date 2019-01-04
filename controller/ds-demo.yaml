@@ -38,6 +38,11 @@ spec:
         app: filebeat
         release: stable
     spec:
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Equal"
+        value: ""
+        effect: "NoSchedule"
       containers:
       - name: filebeat
         image: ikubernetes/filebeat:5.6.5-alpine
